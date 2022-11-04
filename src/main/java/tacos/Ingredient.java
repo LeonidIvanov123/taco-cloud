@@ -1,6 +1,16 @@
 package tacos;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table
 public class Ingredient { 
+	
+	@Id
+	String id;
+	String name;
+	Type type;
+	
 	public Ingredient(String id, String name, Type type) {
 		super();
 		this.id = id;
@@ -28,10 +38,6 @@ public class Ingredient {
 		this.type = type;
 	}
 
-	String id;
-	String name;
-	Type type;
-	
 	
 	public enum Type {
 		 WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE

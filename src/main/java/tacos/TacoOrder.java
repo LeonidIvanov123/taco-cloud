@@ -6,14 +6,20 @@ import java.util.List;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+//import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
+//import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+//import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 	
+@Table //name of table in DB (def = className)
 	public class TacoOrder {
 		 private static final long serialVersionUID = 1L;
+		 @Id //Определяет идентификатор в таблице в бд
 		 private Long id;
 		 private Date placedAt;
+		 //@Column("client_name") //можно менять имя столбца в БД
 		@NotBlank(message="Имя получателя обязательно к заполнению")
 		 private String deliveryName;
 		@NotBlank(message="Адрес доставки обязателен к заполнению")

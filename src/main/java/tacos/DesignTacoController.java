@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tacos.Ingredient.Type;
 import tacos.DBrep.IngredientRepository;
-import tacos.DBrep.JdbcIngredientRepository;
+//import tacos.DBrep.JdbcIngredientRepository;
 
 @Controller
 @RequestMapping("/design")
