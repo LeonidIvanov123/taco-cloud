@@ -1,5 +1,6 @@
 package tacos;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ public class DesignTacoController {
 	 public void addIngredientsToModel(Model model) {
 		
 	
-	List<Ingredient> ingredients= ingregientRepository.findAll();
+	Iterable<Ingredient> ingredients= ingregientRepository.findAll();
 	
 	/*		
 	 List<Ingredient> ingredients = Arrays.asList(
@@ -70,10 +71,14 @@ public class DesignTacoController {
 	 public String showDesignForm() {
 	 return "design";
 	 }
-	 private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
-			 return ingredients
+	 private Iterable<Ingredient> filterByType(Iterable<Ingredient> ingredients, Type type) {
+		 
+		 var lingr = new ArrayList<Ingredient>();
+		 ingredients.forEach(lingr::add);
+		 
+			 return lingr
 			 .stream()
-			 .filter(x -> x.getType().equals(type))
+			 .filter(x -> x.getType().equals(type.name()))
 			 .collect(Collectors.toList());
 	}
 	 

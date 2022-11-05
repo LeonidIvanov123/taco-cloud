@@ -1,17 +1,20 @@
 package tacos;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-@Table
+
+@Entity
 public class Ingredient { 
 	
 	@Id
-	String id;
-	String name;
-	Type type;
+	private String id;
+	private String name;
+	private String type;
 	
-	public Ingredient(String id, String name, Type type) {
+	private Ingredient() {} //Конструктор без аргументов нужен для jpa (значение по умолчанию для полей?!?!?)
+	
+	public Ingredient(String id, String name, String type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -34,7 +37,7 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public void setType(Type type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -43,7 +46,7 @@ public class Ingredient {
 		 WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
 		 }
 
-	public Type getType() {
+	public String getType() {
 		return type;
 	}
 }

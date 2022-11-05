@@ -4,24 +4,30 @@ package tacos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
-@Table
+@Entity
 public class Taco {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
 	@Size(min=5, message="Название не менее 5 символов")
 	private String name;
-	@NotNull
+	@ManyToMany
 	@Size(min=1, message="Должен присутствовать хотя бы 1 ингридиент")
 	private List<Ingredient> ingredients;
 	
 	private Date createAt = new Date();
+	
+	public Taco() {}
 	
 	public Long getId() {
 		return id;

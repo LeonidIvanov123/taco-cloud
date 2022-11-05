@@ -36,7 +36,6 @@ public class OrderController {
 			System.out.println("\n =====Ошибка при создании Заказа=====  Ошибки:\n" + error.toString());
 			return "orderForm";
 		}
-		order.setPlacedAt(new Date());
 		orderRepository.save(order);
 	 sessionStatus.setComplete();
 	 System.out.println("\n=====заказ отправлен====");
